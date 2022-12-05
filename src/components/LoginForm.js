@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function LoginForm({ onLogin }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
@@ -20,7 +20,7 @@ function LoginForm({ onLogin }) {
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else {
-        // r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }
@@ -51,9 +51,9 @@ function LoginForm({ onLogin }) {
           {isLoading ? 'Loading...' : 'Login'}
         </button>
 
-        {/* {errors.map((err) => (
-        <Error key={err}>{err}</Error>
-      ))} */}
+        {errors.map((err) => (
+        <li key={err}>{err}</li>
+      ))}
       </form>
       <div className='already'>
         <hr />

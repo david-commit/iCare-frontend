@@ -20,7 +20,7 @@ function NavBar({ user, setUser }) {
         </div>
         <div>
           {user ? (
-            <button className='nav-menu' onClick={handleLogoutClick}>
+            <button className='nav-menu' onClick={handleLogoutClick} to="/">
               Logout
             </button>
           ) : (

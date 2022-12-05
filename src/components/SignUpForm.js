@@ -46,7 +46,7 @@ function SignUpForm({ onLogin }) {
     <div className='signup'>
       <h1>Signup</h1>
       <form id='signup-form' onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
+        <label htmlFor='name'>Username</label>
         <input
           type='text'
           id='name'
