@@ -7,7 +7,7 @@ import Home from './Home';
 
 function App() {
   const [user, setUser] = useState(null);
-  console.log(user)
+  
   useEffect(() => {
     // auto-login
     fetch('/me').then((r) => {
@@ -17,22 +17,10 @@ function App() {
     });
   }, []);
 
-  // if (!user) return <Login onLogin={setUser} />;
+  // if (!user) return <LoginForm onLogin={setUser} />;
 
   return (
     <>
-      {/* <BrowserRouter>
-        <Navbar user={user} setUser={setUser} />
-        <Switch>
-          <Route path='/signup'>
-            <SignUpForm />
-          </Route>
-          <Route path='/login'>
-            <LoginForm />
-          </Route>
-        </Switch>
-      </BrowserRouter> */}
-      {/* =========== */}
       <BrowserRouter>
         <Navbar user={user} setUser={setUser} />
         {user ? (
@@ -54,7 +42,6 @@ function App() {
             </Route>
           </Switch>
         )}
-        {/* =========== */}
       </BrowserRouter>
     </>
   );

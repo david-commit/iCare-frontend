@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function SignUpForm({ onLogin }) {
   const [name, setName] = useState('');
@@ -6,12 +6,14 @@ function SignUpForm({ onLogin }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [condition, setCondition] = useState('');
   const [caregiver, setCaregiver] = useState('');
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [allCaregivers, setAllCaregivers] = useState([])
+  console.log(allCaregivers)
 
   function handleSubmit(e) {
     e.preventDefault();
-    // setErrors([]);
+    setErrors([]);
     setIsLoading(true);
     fetch('/signup', {
       method: 'POST',
@@ -29,13 +31,18 @@ function SignUpForm({ onLogin }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => onLogin(user));
-        //  GET FROM DOWN
+      } else {
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }
 
-  // } else {
-  // r.json().then((err) => setErrors(err.errors));
+  useEffect(() => {
+    fetch('/caregivers')
+      .then((response) => response.json())
+      .then((data) => setAllCaregivers(data));
+  }, [])
+
   return (
     <div className='signup'>
       <h1>Signup</h1>
@@ -73,16 +80,15 @@ function SignUpForm({ onLogin }) {
           onChange={(e) => setCondition(e.target.value)}
         />
         <label htmlFor='caregiver'>Caregiver</label>
-        <input
-          type='text'
-          id='caregiver'
-          value={caregiver}
-          onChange={(e) => setCaregiver(e.target.value)}
-        />
+        <select name='caregiver' value={caregiver} onChange={(e) => setCaregiver(e.target.value)}>
+          {allCaregivers.map((carer) => {
+            return <option key={carer.id}>{carer.name}</option>;
+          })}
+        </select>
         <button type='submit'>{isLoading ? 'Loading...' : 'Sign Up'}</button>
-        {/* {errors.map((err) => (
-        <Error key={err}>{err}</Error>
-      ))} */}
+        {errors.map((err) => (
+          <li key={err}>{err}</li>
+        ))}
       </form>
       <div className='already'>
         <hr />
