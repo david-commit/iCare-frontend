@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
@@ -12,19 +12,29 @@ function NavBar({ user, setUser }) {
 
   return (
     <header>
-      <div>
-        <Link className='logo' to='/'>Home</Link>
-      </div>
-      <div>
-        {user ? (
-          <button onClick={handleLogoutClick}>Logout</button>
-        ) : (
-          <>
-            <Link to='/signup'>Signup</Link>
-            <Link to='/login'>Login</Link>
-          </>
-        )}
-      </div>
+      <nav>
+        <div>
+          <Link className='logo' to='/'>
+            <span className='i-logo'>i</span>Care
+          </Link>
+        </div>
+        <div>
+          {user ? (
+            <button className='nav-menu' onClick={handleLogoutClick}>
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink className='nav-menu' to='/signup'>
+                Signup
+              </NavLink>
+              <NavLink className='nav-menu' to='/login'>
+                Login
+              </NavLink>
+            </>
+          )}
+        </div>
+      </nav>
     </header>
   );
 }

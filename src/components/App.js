@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+import Home from './Home';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,9 +21,8 @@ function App() {
 
   return (
     <>
-
-      <BrowserRouter>
-      <Navbar user={user} setUser={setUser} />
+      {/* <BrowserRouter>
+        <Navbar user={user} setUser={setUser} />
         <Switch>
           <Route path='/signup'>
             <SignUpForm />
@@ -31,29 +31,31 @@ function App() {
             <LoginForm />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
       {/* =========== */}
-      {/* <NavBar user={user} setUser={setUser} />
+      <BrowserRouter>
+        <Navbar user={user} setUser={setUser} />
         {user ? (
           <Switch>
-            <Route path="/">
-              <Home user={user}/>
+            <Route path='/'>
+              <Home user={user} />
             </Route>
           </Switch>
         ) : (
           <Switch>
-            <Route path="/signup">
-              <SignUp setUser={setUser} />
+            <Route path='/signup'>
+              <SignUpForm setUser={setUser} />
             </Route>
-            <Route path="/login">
-              <Login setUser={setUser} />
+            <Route path='/login'>
+              <LoginForm setUser={setUser} />
             </Route>
-            <Route path="/">
+            <Route path='/'>
               <Home />
             </Route>
           </Switch>
-        )} */}
-      {/* =========== */}
+        )}
+        {/* =========== */}
+      </BrowserRouter>
     </>
   );
 }

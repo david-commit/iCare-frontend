@@ -6,7 +6,8 @@
 }
 /* ==SIGNUP== */
 .signup{
- width: 100%;
+ width: 70vh;
+ height: 80vh;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -84,23 +85,43 @@ button:hover {
 /* ==LOGIN== */
 /* ==NAVBAR== */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* border-bottom: 1px solid #ccc; */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+ display: flex;
+ justify-content: center;
+ background-color: #007786;
+ box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
-
-header a,
-header button {
-  font-size: 1rem;
-  display: inline-block;
-  background-color: #fff8e7;
-  border: 1px solid salmon;
-  margin: 1rem;
-  padding: 1rem;
-  text-decoration: none;
-  color: salmon;
-  cursor: pointer;
+nav {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 80%;
+}
+.logo {
+ text-decoration: none;
+ color: white;
+ font-size: 36px;
+ font-weight: 700;
+ /* margin-left: 1rem; */
+}
+.i-logo {
+ color: blueviolet;
+}
+.nav-menu {
+ width: 60px;
+ text-align: center;
+ font-size: 1rem;
+ display: inline-block;
+ background-color: transparent;
+ border: 1px solid white;
+ margin: 1rem;
+ padding: 1rem;
+ text-decoration: none;
+ color: white;
+ cursor: pointer;
+}
+.nav-menu:hover{
+ background-color: white;
+ color: #007786;
 }
 /* ==NAVBAR== */
