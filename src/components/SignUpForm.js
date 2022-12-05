@@ -9,8 +9,7 @@ function SignUpForm({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [allCaregivers, setAllCaregivers] = useState([])
-  console.log(allCaregivers)
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
@@ -25,7 +24,7 @@ function SignUpForm({ onLogin }) {
         password,
         password_confirmation: passwordConfirmation,
         condition,
-        caregiver,
+        caregiver
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -80,15 +79,28 @@ function SignUpForm({ onLogin }) {
           onChange={(e) => setCondition(e.target.value)}
         />
         <label htmlFor='caregiver'>Caregiver</label>
-        <select name='caregiver' value={caregiver} onChange={(e) => setCaregiver(e.target.value)}>
+        {/* ==SELECT== */}
+        <select
+          name='caregiver'
+          // value={caregiver}
+          onChange={(e) => setCaregiver(e.target.value)}
+        >
+          <option className='option' hidden>
+            Select Caregiver
+          </option>
           {allCaregivers.map((carer) => {
-            return <option key={carer.id}>{carer.name}</option>;
+            return (
+              <option className='option' key={carer.id} value={carer.id}>
+                {carer.name}
+              </option>
+            );
           })}
         </select>
+        {/* ==SELECT== */}
         <button type='submit'>{isLoading ? 'Loading...' : 'Sign Up'}</button>
-        {errors.map((err) => (
+        {/* {errors.map((err) => (
           <li key={err}>{err}</li>
-        ))}
+        ))} */}
       </form>
       <div className='already'>
         <hr />

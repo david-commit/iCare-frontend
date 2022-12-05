@@ -54,6 +54,11 @@ button:hover {
  cursor: pointer;
  filter: brightness(90%);
 }
+select {
+ border: 1px solid lightgray;
+ padding: 7px;
+ border-radius: 5px;
+}
 .already {
  width: 50vh;
 }
