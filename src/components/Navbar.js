@@ -25,10 +25,10 @@ function NavBar({ user, setUser }) {
             </button>
           ) : (
             <>
-              <NavLink className='nav-menu' to='/signup'>
+              <NavLink className='nav-menu' exact to='/signup'>
                 Signup
               </NavLink>
-              <NavLink className='nav-menu' to='/login'>
+              <NavLink className='nav-menu' exact to='/login'>
                 Login
               </NavLink>
             </>

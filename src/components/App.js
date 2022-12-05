@@ -43,13 +43,13 @@ function App() {
           </Switch>
         ) : (
           <Switch>
-            <Route path='/signup'>
+            <Route exact path='/signup'>
               <SignUpForm setUser={setUser} />
             </Route>
-            <Route path='/login'>
+            <Route exact path='/login'>
               <LoginForm setUser={setUser} />
             </Route>
-            <Route path='/'>
+            <Route exact path='/'>
               <Home />
             </Route>
           </Switch>
