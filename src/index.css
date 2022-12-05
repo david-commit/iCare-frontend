@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+*{
+ font-family: 'Open Sans', sans-serif;
+ margin: 0;
+}
+/* ==SIGNUP== */
+.signup{
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ margin-top: 6vh;
+ box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+ margin-left: auto;
+ margin-right: auto;
+}
+.signup h1{
+ margin-bottom: 30px;
+}
+#signup-form{
+ display: flex;
+ flex-direction: column;
+ width: 50vh;
+}
+label {
+ font-size: 18px;
+ font-weight: 600;
+ padding: 12px 0 4px 0;
+}
+input {
+ border: 1px solid lightgray;
+ padding: 7px;
+ border-radius: 5px;
+}
+textarea {
+ border: 1px solid lightgray;
+ padding: 7px;
+ border-radius: 5px;
+}
+button {
+ width: fit-content;
+ padding: 6px 18px;
+ font-size: 16px;
+ margin: 20px 0;
+ background-color: #007786;
+ border: 1px solid #007786;
+ border-radius: 5px;
+ color: white;
+}
+button:hover {
+ cursor: pointer;
+ filter: brightness(90%);
+}
+.already {
+ width: 50vh;
+}
+.already p {
+ padding-top: 12px;
+}
+/* ==SIGNUP== */
+/* ==LOGIN== */
+.login{
+ width: 70vh;
+ height: 60vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ margin-top: 6vh;
+ box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+ margin-left: auto;
+ margin-right: auto;
+}
+.login h1{
+ margin-bottom: 30px;
+}
+#login-form{
+ display: flex;
+ flex-direction: column;
+ width: 50vh;
+}
+/* ==LOGIN== */
+/* ==NAVBAR== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1px solid #ccc; */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+header a,
+header button {
+  font-size: 1rem;
+  display: inline-block;
+  background-color: #fff8e7;
+  border: 1px solid salmon;
+  margin: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: salmon;
+  cursor: pointer;
+}
+/* ==NAVBAR== */
