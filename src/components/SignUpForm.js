@@ -24,7 +24,7 @@ function SignUpForm({ onLogin }) {
         password,
         password_confirmation: passwordConfirmation,
         condition,
-        caregiver
+        caregiver_id: caregiver
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -98,9 +98,9 @@ function SignUpForm({ onLogin }) {
         </select>
         {/* ==SELECT== */}
         <button type='submit'>{isLoading ? 'Loading...' : 'Sign Up'}</button>
-        {/* {errors.map((err) => (
+        {errors.map((err) => (
           <li key={err}>{err}</li>
-        ))} */}
+        ))}
       </form>
       <div className='already'>
         <hr />
