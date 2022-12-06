@@ -227,4 +227,22 @@ nav {
  background-color: white;
  color: #007786;
 }
+.home-cont-4 {
+ width: 70%;
+ /* display: flex; */
+ position: relative;
+ margin: 15vh auto;
+}
+.home-cont-4 img {
+ width: 50vh;
+ height: fit-content;
+ padding:  0 7vh 4vh 0;
+ float: left;
+}
+.home-cont-4-text h1{
+ line-height: 55px;
+}
+.home-cont-4-text-p {
+ line-height: 36px;
+}
 /* ==HOME== */
