@@ -53,6 +53,7 @@ button {
 button:hover {
  cursor: pointer;
  filter: brightness(90%);
+ transition: all 0.35s ease-in-out;
 }
 select {
  border: 1px solid lightgray;
@@ -110,7 +111,7 @@ nav {
  /* margin-left: 1rem; */
 }
 .i-logo {
- color: blueviolet;
+ color: black;
 }
 .nav-menu {
  width: 60px;
@@ -128,5 +129,45 @@ nav {
 .nav-menu:hover{
  background-color: white;
  color: #007786;
+ transition: all 0.35s ease-in-out;
 }
 /* ==NAVBAR== */
+/* ==HOME== */
+.home {
+ width: 100%;
+}
+.home-banner {
+ width: 100%;
+ background-image: url("./img/image.webp");
+ color: white;
+ overflow: hidden;
+ background-position: center center;
+ background-size: cover;
+ height: 70vh;
+}
+.home-banner-text {
+ color: white;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+ height: 70vh;
+ margin: auto;
+ text-align: center;
+}
+.home-banner-text h1 {
+ font-size: 50px;
+}
+.home-banner-text p {
+ font-size: 20px;
+ width: 70%;
+}
+.home-banner-text button {
+ font-size: 20px;
+ padding: 10px 30px;
+}
+.home-banner-text button:hover {
+ background-color: transparent;
+ transition: all 0.35s ease-in-out;
+}
+/* ==HOME== */

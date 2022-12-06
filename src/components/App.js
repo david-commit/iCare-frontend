@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      {!user ? (
+      {(user) ? (
         <BrowserRouter>
           <Navbar user={user} setUser={setUser} />
 
