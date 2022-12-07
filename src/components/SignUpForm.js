@@ -99,7 +99,7 @@ function SignUpForm({ onLogin }) {
         {/* ==SELECT== */}
         <button type='submit'>{isLoading ? 'Loading...' : 'Sign Up'}</button>
         {errors.map((err) => (
-          <li key={err}>{err}</li>
+          <li style={{color: "red"}} key={err}>{err}</li>
         ))}
       </form>
       <div className='already'>

@@ -246,3 +246,43 @@ nav {
  line-height: 36px;
 }
 /* ==HOME== */
+/* ==PATIENT-ME== */
+.patient-me {
+ width: 70%;
+ display: flex;
+ flex-direction: column;
+ margin: 100px auto;
+ justify-content: center;
+}
+.patient-me-table {
+ height: auto;
+ margin-bottom: 40px;
+}
+table{
+ text-align: center;
+ border-collapse: collapse;
+ width: 100%;
+}
+td, th {
+ border: 1px solid #007786;
+ padding: 10px ;
+}
+.patient-me-form {
+ margin-top: 40px;
+}
+.patient-me-form {
+ 
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+#appointment-form{
+ display: flex;
+ flex-direction: column;
+ width: 50vh;
+}
+#appointment-form button:hover {
+ background-color: white;
+ color: #007786;
+}
+/* ==PATIENT-ME== */

@@ -27,13 +27,13 @@ function App() {
 
   return (
     <>
-      {(user) ? (
+      {/* {(user) ? (
         <BrowserRouter>
           <Navbar user={user} setUser={setUser} />
 
           <LoginForm onLogin={setUser} />
         </BrowserRouter>
-      ) : (
+      ) : ( */}
         <BrowserRouter>
           <Navbar user={user} setUser={setUser} />
           {user ? (
@@ -53,13 +53,13 @@ function App() {
               <Route exact path='/'>
                 <Home />
               </Route>
-              <Route exact path='/logout'>
+              {/* <Route exact path='/logout'>
                 <Home />
-              </Route>
+              </Route> */}
             </Switch>
           )}
         </BrowserRouter>
-      )}
+      {/*  )} */}
     </>
   );
 }

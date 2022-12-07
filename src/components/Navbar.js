@@ -20,9 +20,14 @@ function NavBar({ user, setUser }) {
         </div>
         <div>
           {user ? (
-            <button className='nav-menu' onClick={handleLogoutClick} to="/">
+            <NavLink
+              className='nav-menu'
+              onClick={handleLogoutClick}
+              to='/'
+              variant='outline'
+            >
               Logout
-            </button>
+            </NavLink>
           ) : (
             <>
               <NavLink className='nav-menu' exact to='/signup'>
