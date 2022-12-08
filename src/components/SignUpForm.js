@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 function SignUpForm({ onLogin }) {
   const [name, setName] = useState('');
@@ -9,6 +10,7 @@ function SignUpForm({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [allCaregivers, setAllCaregivers] = useState([])
+  const [success, setSuccess] = useState("")
   
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,7 +31,10 @@ function SignUpForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user)
+          setSuccess(user);
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -41,6 +46,8 @@ function SignUpForm({ onLogin }) {
       .then((response) => response.json())
       .then((data) => setAllCaregivers(data));
   }, [])
+
+  if (success.length > 0) return <NavLink to='/patients/me' />;
 
   return (
     <div className='signup'>
@@ -99,16 +106,18 @@ function SignUpForm({ onLogin }) {
         {/* ==SELECT== */}
         <button type='submit'>{isLoading ? 'Loading...' : 'Sign Up'}</button>
         {errors.map((err) => (
-          <li style={{color: "red"}} key={err}>{err}</li>
+          <li style={{ color: 'red' }} key={err}>
+            {err}
+          </li>
         ))}
       </form>
       <div className='already'>
         <hr />
         <p>
           Already have an account? &nbsp;
-          {/* <button color='secondary' onClick={() => setShowLogin(true)}>
-          Log In
-        </button> */}
+          <Link to='/login'>
+            <button type='button'>Login</button>
+          </Link>
         </p>
       </div>
     </div>

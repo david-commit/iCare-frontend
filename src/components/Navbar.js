@@ -20,14 +20,23 @@ function NavBar({ user, setUser }) {
         </div>
         <div>
           {user ? (
-            <NavLink
-              className='nav-menu'
-              onClick={handleLogoutClick}
-              to='/'
-              variant='outline'
-            >
-              Logout
-            </NavLink>
+            <>
+              <NavLink
+                className='nav-menu'
+                to='/patients/me'
+                style={{width: "max-content"}}
+              >
+                Appointments
+              </NavLink>
+              <NavLink
+                className='nav-menu'
+                onClick={handleLogoutClick}
+                to='/'
+                variant='outline'
+              >
+                Logout
+              </NavLink>
+            </>
           ) : (
             <>
               <NavLink className='nav-menu' exact to='/signup'>

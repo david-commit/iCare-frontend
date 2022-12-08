@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import LoginForm from './LoginForm';
 
 function PatientMe({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([])
@@ -7,12 +6,6 @@ function PatientMe({ user }) {
   const [appointmentType, setAppointmentType] = useState("")
   const [errors, setErrors] = useState([])
   const [practitioner, setPractitioner] = useState("")
-  // if (!user) return (
-  //   <>
-  //      <LoginForm />
-  //      NOT
-  //   </>
-  // );
 
   useEffect(() => {
     fetch("/practitioners")
@@ -52,12 +45,11 @@ function PatientMe({ user }) {
             <th>Duartion</th>
             <th>Type</th>
             <th>Booked At</th>
+            <th></th>
           </tr>
-          {/* {const records = (user.appointments.length)} */}
-          {user.appointments.length < 0 ? 
-          (
+          {user.appointments.length < 1 ? (
             <tr>
-              <td colSpan='6'>No Booked Sessions</td>
+              <td colSpan='7'>No Booked Sessions</td>
             </tr>
           ) : (
             user.appointments.map((app) => (
@@ -68,27 +60,19 @@ function PatientMe({ user }) {
                 <td>{app.duration}</td>
                 <td>{app.appointment_type}</td>
                 <td>{app.booked_at}</td>
+                <td>
+                  <i
+                    onClick={fetch(`/appointments/${app.id}`, {
+                      method: 'DELETE',
+                    })
+                    .then(r => r.json())
+                  }
+                    class='fa-solid fa-trash'
+                  ></i>
+                </td>
               </tr>
             ))
           )}
-
-          {/* ==== */}
-          {/* {user.appointments.length < 0 ? (
-            user.appointments.map((app) => (
-              <tr>
-                <td>{app.id}</td>
-                <td>{app.practitioner_id}</td>
-                <td>{app.practitioner_name}</td>
-                <td>{app.duration}</td>
-                <td>{app.appointment_type}</td>
-                <td>{app.booked_at}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan='6'>No Booked Sessions</td>
-            </tr>
-          )} */}
         </table>
       </div>
 

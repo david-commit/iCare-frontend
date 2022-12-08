@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 function LoginForm({ onLogin }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState("")
+  console.log(errors)
 
   function handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     setIsLoading(true);
     fetch('/login', {
       method: 'POST',
@@ -18,12 +21,19 @@ function LoginForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          setSuccess(user)
+          onLogin(user)
+        });
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {setErrors(err.errors)
+        console.log(err)
+        });
       }
     });
   }
+  
+  if (success.length > 0) return <NavLink to="/patients/me" />
 
   return (
     <div className='login'>
@@ -47,21 +57,21 @@ function LoginForm({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type='submit'>
-          {isLoading ? 'Loading...' : 'Login'}
-        </button>
+        <button type='submit'>{isLoading ? 'Loading...' : 'Login'}</button>
 
         {errors.map((err) => (
-        <li key={err}>{err}</li>
-      ))}
+          <li key={err}>{err}</li>
+        ))}
       </form>
       <div className='already'>
         <hr />
         <p>
           Don't have an account? &nbsp;
-          {/* <button color='secondary' onClick={() => setShowLogin(true)}>
+          <Link to="/signup">
+          <button type='button'>
           Sign Up
-        </button> */}
+        </button>
+        </Link>
         </p>
       </div>
     </div>

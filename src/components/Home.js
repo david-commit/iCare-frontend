@@ -62,7 +62,7 @@ function Home() {
       </div>
       <div className='home-cont-4'>
         <img src={momChild} alt='mom and child' />
-        <p className='home-cont-4-text'>
+        <div className='home-cont-4-text'>
           <h1>How do you Care For Someone with Cerebral Palsy?</h1>
           <br />
           <p className='home-cont-4-text-p'>
@@ -95,7 +95,7 @@ function Home() {
               the individual. Read more...
             </p>
           </p>
-        </p>
+        </div>
         
         <div className='home-cont-4-text'></div>
       </div>

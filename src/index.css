@@ -285,4 +285,8 @@ td, th {
  background-color: white;
  color: #007786;
 }
+i {
+	color: #FFCCCB; 
+ cursor: pointer;
+};
 /* ==PATIENT-ME== */
