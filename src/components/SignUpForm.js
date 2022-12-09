@@ -12,8 +12,8 @@ function SignUpForm({ onLogin }) {
   const [allCaregivers, setAllCaregivers] = useState([])
   const [success, setSuccess] = useState("")
   
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
+    // e.preventDefault();
     setErrors([]);
     setIsLoading(true);
     fetch('/signup', {
@@ -47,7 +47,8 @@ function SignUpForm({ onLogin }) {
       .then((data) => setAllCaregivers(data));
   }, [])
 
-  if (success.length > 0) return <NavLink to='/patients/me' />;
+  if (success.length > 0) return <NavLink to='/me' />;
+
 
   return (
     <div className='signup'>

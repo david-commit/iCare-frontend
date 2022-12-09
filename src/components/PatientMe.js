@@ -13,8 +13,8 @@ function PatientMe({ user }) {
     .then(data => setAllPractitioners(data))
   }, [])
 
-   function handleBookingSubmit(e) {
-     e.preventDefault();
+   function handleBookingSubmit() {
+    //  e.preventDefault();
      setErrors([]);
      fetch('/appointments', {
        method: 'POST',

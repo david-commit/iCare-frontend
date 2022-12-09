@@ -9,7 +9,7 @@ function LoginForm({ onLogin }) {
   const [success, setSuccess] = useState("")
   console.log(errors)
 
-  function handleSubmit(e) {
+  function handleSubmit() {
     // e.preventDefault();
     setIsLoading(true);
     fetch('/login', {
@@ -22,8 +22,8 @@ function LoginForm({ onLogin }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => {
-          setSuccess(user)
           onLogin(user)
+          setSuccess(user)
         });
       } else {
         r.json().then((err) => {setErrors(err.errors)
