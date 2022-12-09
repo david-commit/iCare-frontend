@@ -56,6 +56,10 @@ function Appointment({ user }) {
         });
       }
     });
+    setDuration('')
+    setAppointmentType('')
+    setDate('')
+    setPractitioner('')
   }
 
   return (

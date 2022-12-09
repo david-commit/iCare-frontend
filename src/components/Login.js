@@ -7,7 +7,6 @@ function Login({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(null);
-  console.log(errors)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,8 +30,10 @@ function Login({ onLogin }) {
         });
       }
     });
+    setName('');
+    setPassword('')
   }
-  console.log(success)
+
     if (success == !null) return <NavLink to='/me' />;
 
   return (
