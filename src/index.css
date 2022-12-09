@@ -285,8 +285,12 @@ td, th {
  background-color: white;
  color: #007786;
 }
-i {
-	color: #FFCCCB; 
+#del-btn {
+	color: #FF4122; 
  cursor: pointer;
-};
+}
+#edit-btn {
+ cursor: pointer;
+ color: #007786;
+}
 /* ==PATIENT-ME== */

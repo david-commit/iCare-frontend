@@ -27,7 +27,9 @@ function Home() {
           <img src={familyImg} alt='Family' />
         </div>
         <div className='home-cont-2-text'>
-          <h1>Learn How to Be Efficient in Providing Care for Your Loved One</h1>
+          <h1>
+            Learn How to Be Efficient in Providing Care for Your Loved One
+          </h1>
           <p>
             <br />
             We believe the best care is delivered when it is delivered with
@@ -69,34 +71,27 @@ function Home() {
             Cerebral palsy (CP) is the most common childhood disability. In the
             United States, about 764,000 people currently have this condition.
             While some exhibit only a few symptoms, others need assistance with
-            basic activities like walking and eating.{' '}
-            <p>
-              {' '}
-              Depending on the severity of the condition, caring for someone
-              with cerebral palsy can be complicated. Since CP affects motor
-              skills, you may need to help the inpidual walk, go to the
-              bathroom, eat, and dress.
-            </p>{' '}
+            basic activities like walking and eating. Depending on the severity
+            of the condition, caring for someone with cerebral palsy can be
+            complicated. Since CP affects motor skills, you may need to help the
+            inpidual walk, go to the bathroom, eat, and dress.{' '}
+          </p>
+          <p className='home-cont-4-text-p'>
             Let’s take a closer look at what cerebral palsy is and what caring
-            for an individual with this condition entails.
-            <p>
-              It’s important to understand that cerebral palsy isn’t a disease.
-              It’s a condition that affects areas of an individual’s brain that
-              are responsible for movement. CP occurs due to abnormal brain
-              development or an injury to a developing brain. Brain damage
-              usually happens before birth. However, it can also occur during
-              the first years of the child’s life.
-            </p>
-            <p>
-              While cerebral palsy isn’t a genetic condition, research shows
-              that some hereditary factors can put an individual at risk of
-              developing it. Different types of cerebral palsy exist. They are
-              classified based on the main type of movement disorder affecting
-              the individual. Read more...
-            </p>
+            for an individual with this condition entails. It’s important to
+            understand that cerebral palsy isn’t a disease. It’s a condition
+            that affects areas of an individual’s brain that are responsible for
+            movement. CP occurs due to abnormal brain development or an injury
+            to a developing brain. Brain damage usually happens before birth.
+            However, it can also occur during the first years of the child’s
+            life. While cerebral palsy isn’t a genetic condition, research shows
+            that some hereditary factors can put an individual at risk of
+            developing it. Different types of cerebral palsy exist. They are
+            classified based on the main type of movement disorder affecting the
+            individual. Read more...
           </p>
         </div>
-        
+
         <div className='home-cont-4-text'></div>
       </div>
     </div>

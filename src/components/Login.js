@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-function LoginForm({ onLogin }) {
+function Login({ onLogin }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState("")
+  const [success, setSuccess] = useState(null);
   console.log(errors)
 
-  function handleSubmit() {
-    // e.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     setIsLoading(true);
     fetch('/login', {
       method: 'POST',
@@ -22,8 +22,8 @@ function LoginForm({ onLogin }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => {
-          onLogin(user)
-          setSuccess(user)
+          onLogin(user);
+          setSuccess(user);
         });
       } else {
         r.json().then((err) => {setErrors(err.errors)
@@ -32,12 +32,13 @@ function LoginForm({ onLogin }) {
       }
     });
   }
-  
-  if (success.length > 0) return <NavLink to="/patients/me" />
+  console.log(success)
+    if (success == !null) return <NavLink to='/me' />;
 
   return (
     <div className='login'>
       <h1>Login</h1>
+      <p>Refresh page if no records appear or if frozen.</p>
       <form id='login-form' onSubmit={handleSubmit}>
         <label htmlFor='username'>Username</label>
         <input
@@ -67,15 +68,13 @@ function LoginForm({ onLogin }) {
         <hr />
         <p>
           Don't have an account? &nbsp;
-          <Link to="/signup">
-          <button type='button'>
-          Sign Up
-        </button>
-        </Link>
+          <Link to='/signup'>
+            <button type='button'>Sign Up</button>
+          </Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default LoginForm;
+export default Login;

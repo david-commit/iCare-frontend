@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-function SignUpForm({ onLogin }) {
+function SignUp({ onLogin }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -9,11 +9,11 @@ function SignUpForm({ onLogin }) {
   const [caregiver, setCaregiver] = useState('');
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [allCaregivers, setAllCaregivers] = useState([])
-  const [success, setSuccess] = useState("")
-  
-  function handleSubmit() {
-    // e.preventDefault();
+  const [allCaregivers, setAllCaregivers] = useState([]);
+  const [success, setSuccess] = useState(null);
+
+  function handleSubmit(e) {
+    e.preventDefault();
     setErrors([]);
     setIsLoading(true);
     fetch('/signup', {
@@ -26,14 +26,15 @@ function SignUpForm({ onLogin }) {
         password,
         password_confirmation: passwordConfirmation,
         condition,
-        caregiver_id: caregiver
+        caregiver_id: caregiver,
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => {
-          onLogin(user)
+          onLogin(user);
           setSuccess(user);
+          
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -45,10 +46,9 @@ function SignUpForm({ onLogin }) {
     fetch('/caregivers')
       .then((response) => response.json())
       .then((data) => setAllCaregivers(data));
-  }, [])
+  }, []);
 
-  if (success.length > 0) return <NavLink to='/me' />;
-
+  if (success == !null) return <NavLink to='/me' />;
 
   return (
     <div className='signup'>
@@ -125,4 +125,4 @@ function SignUpForm({ onLogin }) {
   );
 }
 
-export default SignUpForm;
+export default SignUp;

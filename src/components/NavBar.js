@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 function NavBar({ user, setUser }) {
+  
   function handleLogoutClick() {
     fetch('/logout', { method: 'DELETE' }).then((r) => {
       if (r.ok) {
@@ -23,7 +24,7 @@ function NavBar({ user, setUser }) {
             <>
               <NavLink
                 className='nav-menu'
-                to='/patients/me'
+                to='/me'
                 style={{width: "max-content"}}
               >
                 Appointments
