@@ -7,9 +7,11 @@ import Login from './Login';
 import NavBar from './NavBar';
 import SignUp from './SignUp';
 
+// DEPLOYED LINK
+const BASE_URL = "https://icare-backend-production-a245.up.railway.app/"
+
 function App() {
   const [user, setUser] = useState(null);
-
 
   useEffect(() => {
     // auto-login
