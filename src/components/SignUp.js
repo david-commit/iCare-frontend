@@ -48,7 +48,7 @@ function SignUp({ onLogin }) {
       .then((data) => setAllCaregivers(data));
   }, []);
 
-  if (success == !null) return <NavLink to='/me' />;
+  if (success === !null) return <NavLink to='/me' />;
 
   return (
     <div className='signup'>
