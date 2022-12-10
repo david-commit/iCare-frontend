@@ -30,6 +30,7 @@ iCare Health App is a web platform built with React and Ruby on Rails for the fr
 
 - Front End: http://i-care-frontend.vercel.app/
 - Back End: https://icare-backend-production-a245.up.railway.app/
+- Integrated (Vercel + railway): https://i-care-frontend-2mae6523v-david-commit.vercel.app/signup
 
 ## Getting Started
 
