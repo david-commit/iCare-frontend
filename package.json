@@ -2,7 +2,9 @@
   "name": "icare-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://icare-backend-production-a245.up.railway.app/",
+  "proxy": {
+    "/api": "https://icare-backend-production-a245.up.railway.app/"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
