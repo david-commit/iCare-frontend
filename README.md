@@ -44,8 +44,12 @@ A user would be able to:
 - Book an appointment with a preferred practitioner
 - Logout of the session <br />
 
-Working on:
+Finishing up:
 - Ability to edit and delete an appointment
+
+Challenges:
+- 405 Error <br />
+The 405 Method Not Allowed error occurs between a client and a server. This message indicates that the web server has recognized a request from a web browser to access the website but rejects the specific HTTP method. Since the web browser cannot access the requested page, it will show an error message instead.
 
 ## Getting Started
 
