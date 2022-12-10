@@ -22,9 +22,12 @@ iCare Health App is a web platform built with React and Ruby on Rails for the fr
 
 ## Screenshots
 #### Landing Page
-![App Screenshot](https://i.postimg.cc/N04RcR5n/screencapture-localhost-4000-2022-12-09-09-07-46.png)
+<!-- ![App Screenshot](https://i.postimg.cc/N04RcR5n/screencapture-localhost-4000-2022-12-09-09-07-46.png) -->
+<img src="https://i.postimg.cc/N04RcR5n/screencapture-localhost-4000-2022-12-09-09-07-46.png" alt="landing page" style="width: 80%"/>
+
 #### Appointments Page
 ![Appointments Screenshot](https://i.postimg.cc/sg9JjMXt/screencapture-localhost-4000-login-2022-12-09-09-27-36.png)
+
 
 ## Deployed Project
 
