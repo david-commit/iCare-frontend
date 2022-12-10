@@ -30,7 +30,19 @@ iCare Health App is a web platform built with React and Ruby on Rails for the fr
 
 - Front End: http://i-care-frontend.vercel.app/
 - Back End: https://icare-backend-production-a245.up.railway.app/
-- Integrated (Vercel + railway): https://i-care-frontend-2mae6523v-david-commit.vercel.app/signup
+- Integrated (Vercel + Railway): https://i-care-frontend-2mae6523v-david-commit.vercel.app/signup
+
+## MVP
+A user would be able to:
+- View the homepage
+- Register a patient with a caregiver of their choice
+- Login after signing up
+- Display a list of all patient's appointments
+- Book an appointment with a preferred practitioner
+- Logout of the session <br />
+
+Working on:
+- Ability to edit and delete an appointment
 
 ## Getting Started
 
