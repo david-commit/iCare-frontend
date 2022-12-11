@@ -39,7 +39,6 @@ function Login({ onLogin }) {
   return (
     <div className='login'>
       <h1>Login</h1>
-      <p>Refresh page if no records appear or if frozen.</p>
       <form id='login-form' onSubmit={handleSubmit}>
         <label htmlFor='username'>Username</label>
         <input

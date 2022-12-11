@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/https://icare-backend-production-a245.up.railway.app",
+      "source": "https://icare-backend-production-a245.up.railway.app",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
