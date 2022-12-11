@@ -24,16 +24,6 @@ function App() {
     });
   }, []);
 
-  // if (user)
-  //   return (
-  //     <>
-  //       <NavBar user={user} setUser={setUser} />
-  //       <Appointment user={user} />
-  //       <NavLink to="/me" />
-  //     </>
-  //   );
-  // window.location.reload();
-
   return (
     <>
       <NavBar user={user} setUser={setUser} />
@@ -47,7 +37,7 @@ function App() {
         <Route exact path='/signup'>
           {user ? <Appointment user={user} /> : <SignUp onLogin={setUser} />}
         </Route>
-        <Route exact path='/update/:id'>
+        <Route exact path='/appointments/:id'>
           <UpdateAppointment user={user} setUser={setUser}  />
         </Route>
         <Route exact path='/'>

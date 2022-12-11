@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function Appointment({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([]);
@@ -38,6 +38,7 @@ function Appointment({ user }) {
       if (r.ok) {
         r.json().then((user) => {
           'Success';
+          <Redirect to='/appointments' />;
         });
       } else {
         r.json().then((err) => {
@@ -50,8 +51,8 @@ function Appointment({ user }) {
     setAppointmentType('')
     setDate('')
     setPractitioner('')
-    window.scrollTo(0, 0);
     reload()
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -89,7 +90,7 @@ function Appointment({ user }) {
                   <td>{app.date}</td>
                   <td>{app.duration}</td>
                   <td>
-                    <Link to={`/update/${app.id}`}>
+                    <Link to={`/appointments/${app.id}`}>
                       <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
                     </Link>
                   </td>
@@ -102,6 +103,7 @@ function Appointment({ user }) {
                         fetch(`/appointments/${app.id}`, {
                           method: 'DELETE',
                         });
+                        reload();
                       }}
                       class='fa-solid fa-trash'
                     ></i>

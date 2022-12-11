@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; // import { Tooltip } from 'react-tooltip';
+import { NavLink } from 'react-router-dom';
 
 // DELETE NOT WORKING CORRECTLY
 
@@ -9,8 +10,6 @@ function UpdateAppointment({ user }) {
   const [errors, setErrors] = useState([]);
   const [practitioner, setPractitioner] = useState('');
   const [date, setDate] = useState('');
-  // const allAppointments = user.appointments;
-  // const allAppointmentsLength = allAppointments.length;
 
   useEffect(() => {
     fetch('/practitioners')
@@ -18,10 +17,14 @@ function UpdateAppointment({ user }) {
       .then((data) => setAllPractitioners(data));
   }, []);
 
+  // useEffect(() => {
+  //  fetch(`/appointments/${id}`)
+  // })
+
   function handleBookingUpdate(e) {
     e.preventDefault();
     setErrors([]);
-    fetch('/appointments', {
+    fetch(`/appointments/:id`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +39,7 @@ function UpdateAppointment({ user }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          'Success';
+          <NavLink to="/appointments"></NavLink>
         });
       } else {
         r.json().then((err) => {
@@ -53,7 +56,7 @@ function UpdateAppointment({ user }) {
   return (
     <div className='patient-me'>
       <div className='patient-me-form'>
-        <h1>Book an Appointment</h1>
+        <h1>Update Appointment</h1><br />
         <form id='appointment-form' onSubmit={handleBookingUpdate}>
           <label htmlFor='practitioner'>Select Practitioner</label>
           <select
