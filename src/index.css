@@ -16,6 +16,7 @@
  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
  margin-left: auto;
  margin-right: auto;
+ margin-bottom: 100px;
 }
 .signup h1{
  margin-bottom: 30px;
@@ -79,6 +80,7 @@ select {
  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
  margin-left: auto;
  margin-right: auto;
+ margin-bottom: 100px;
 }
 .login h1{
  margin-bottom: 30px;

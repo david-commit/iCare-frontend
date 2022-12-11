@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Appointment({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([]);
@@ -9,15 +9,15 @@ function Appointment({ user }) {
   const [practitioner, setPractitioner] = useState('');
   const [date, setDate] = useState('');
   const allAppointments = user.appointments;
-  const allAppointmentsLength = allAppointments.length
+  // const allAppointmentsLength = allAppointments.length
+
+  const reload = () => window.location.reload();
 
   useEffect(() => {
     fetch('/practitioners')
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
-  }, []);
-
-  const reload = () => window.location.reload();
+  }, [allPractitioners]);
 
   function handleBookingSubmit(e) {
     e.preventDefault();
@@ -38,7 +38,6 @@ function Appointment({ user }) {
       if (r.ok) {
         r.json().then((user) => {
           'Success';
-          <Redirect to='/appointments' />;
         });
       } else {
         r.json().then((err) => {
@@ -47,13 +46,15 @@ function Appointment({ user }) {
         });
       }
     });
-    setDuration('')
-    setAppointmentType('')
-    setDate('')
-    setPractitioner('')
-    reload()
+    setDuration('');
+    setAppointmentType('');
+    setDate('');
+    setPractitioner('');
     window.scrollTo(0, 0);
+    reload();
   }
+
+  
 
   return (
     <div className='patient-me'>
@@ -76,41 +77,41 @@ function Appointment({ user }) {
               <th>Duartion</th>
               <th colSpan={2}></th>
             </tr>
-            {allAppointmentsLength < 1 ? (
+            {/* {allAppointmentsLength < 1 ? (
               <tr>
                 <td colSpan='7'>No Booked Sessions</td>
               </tr>
-            ) : (
-              allAppointments?.map((app) => (
-                <tr key={app.id}>
-                  <td>{app.id}</td>
-                  <td>{app.practitioner_id}</td>
-                  <td>{app.practitioner_name}</td>
-                  <td>{app.appointment_type}</td>
-                  <td>{app.date}</td>
-                  <td>{app.duration}</td>
-                  <td>
-                    <Link to={`/appointments/${app.id}`}>
-                      <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
-                    </Link>
-                  </td>
-                  <td>
-                    <i
-                      data-tip
-                      data-for='del'
-                      id='del-btn'
-                      onClick={() => {
-                        fetch(`/appointments/${app.id}`, {
-                          method: 'DELETE',
-                        });
-                        reload();
-                      }}
-                      class='fa-solid fa-trash'
-                    ></i>
-                  </td>
-                </tr>
-              ))
-            )}
+            ) : ( */}
+            {allAppointments?.map((app) => (
+              <tr key={app.id}>
+                <td>{app.id}</td>
+                <td>{app.practitioner_id}</td>
+                <td>{app.practitioner_name}</td>
+                <td>{app.appointment_type}</td>
+                <td>{app.date}</td>
+                <td>{app.duration}</td>
+                <td>
+                  <Link to={`/appointments/${app.id}`}>
+                    <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
+                  </Link>
+                </td>
+                <td>
+                  <i
+                    data-tip
+                    data-for='del'
+                    id='del-btn'
+                    onClick={() => {
+                      fetch(`/appointments/${app.id}`, {
+                        method: 'DELETE',
+                      });
+                      reload();
+                    }}
+                    class='fa-solid fa-trash'
+                  ></i>
+                </td>
+              </tr>
+            ))}
+            {/* )} */}
           </tbody>
         </table>
       </div>
