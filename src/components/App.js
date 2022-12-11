@@ -7,6 +7,7 @@ import Login from './Login';
 import NavBar from './NavBar';
 import SignUp from './SignUp';
 import Footer from './Footer';
+import UpdateAppointment from './UpdateAppointment';
 
 // DEPLOYED LINK
 // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route exact path='/signup'>
           {user ? <Appointment user={user} /> : <SignUp onLogin={setUser} />}
+        </Route>
+        <Route exact path='/update/:id'>
+          <UpdateAppointment user={user} setUser={setUser}  />
         </Route>
         <Route exact path='/'>
           <Home />

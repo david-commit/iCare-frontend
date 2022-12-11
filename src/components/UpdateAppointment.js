@@ -9,8 +9,8 @@ function UpdateAppointment({ user }) {
   const [errors, setErrors] = useState([]);
   const [practitioner, setPractitioner] = useState('');
   const [date, setDate] = useState('');
-  const allAppointments = user.appointments;
-  const allAppointmentsLength = allAppointments.length;
+  // const allAppointments = user.appointments;
+  // const allAppointmentsLength = allAppointments.length;
 
   useEffect(() => {
     fetch('/practitioners')
@@ -18,7 +18,7 @@ function UpdateAppointment({ user }) {
       .then((data) => setAllPractitioners(data));
   }, []);
 
-  function handleBookingSubmit(e) {
+  function handleBookingUpdate(e) {
     e.preventDefault();
     setErrors([]);
     fetch('/appointments', {
@@ -41,7 +41,6 @@ function UpdateAppointment({ user }) {
       } else {
         r.json().then((err) => {
           setErrors(err.errors);
-          console.log(err);
         });
       }
     });
@@ -53,60 +52,9 @@ function UpdateAppointment({ user }) {
 
   return (
     <div className='patient-me'>
-      <div className='patient-me-table'>
-        <h1>Update Appointment</h1>
-        <br />
-        <br />
-        <table>
-          <tbody>
-            <tr>
-              <th>App ID</th>
-              <th>Practioner ID</th>
-              <th>Practitioner Name</th>
-              <th>App Type</th>
-              <th>Date</th>
-              <th>Duartion</th>
-              <th colSpan={2}></th>
-            </tr>
-            {allAppointmentsLength < 1 ? (
-              <tr>
-                <td colSpan='7'>No Booked Sessions</td>
-              </tr>
-            ) : (
-              allAppointments?.map((app) => (
-                <tr key={app.id}>
-                  <td>{app.id}</td>
-                  <td>{app.practitioner_id}</td>
-                  <td>{app.practitioner_name}</td>
-                  <td>{app.appointment_type}</td>
-                  <td>{app.date}</td>
-                  <td>{app.duration}</td>
-                  <td>
-                    <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
-                  </td>
-                  <td>
-                    <i
-                      data-tip
-                      data-for='del'
-                      id='del-btn'
-                      onClick={() => {
-                        fetch(`/appointments/${app.id}`, {
-                          method: 'DELETE',
-                        });
-                      }}
-                      class='fa-solid fa-trash'
-                    ></i>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-
       <div className='patient-me-form'>
         <h1>Book an Appointment</h1>
-        <form id='appointment-form' onSubmit={handleBookingSubmit}>
+        <form id='appointment-form' onSubmit={handleBookingUpdate}>
           <label htmlFor='practitioner'>Select Practitioner</label>
           <select
             name='practitioner'
@@ -143,7 +91,7 @@ function UpdateAppointment({ user }) {
             value={appointmentType}
             onChange={(e) => setAppointmentType(e.target.value)}
           />
-          <button type='submit'>BOOK</button>
+          <button type='submit'>Submit Change</button>
           {errors.map((err) => (
             <li style={{ color: 'red' }} key={err}>
               {err}

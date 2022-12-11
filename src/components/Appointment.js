@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Appointment({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([]);
@@ -15,6 +16,8 @@ function Appointment({ user }) {
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
   }, []);
+
+  const reload = () => window.location.reload();
 
   function handleBookingSubmit(e) {
     e.preventDefault();
@@ -47,6 +50,8 @@ function Appointment({ user }) {
     setAppointmentType('')
     setDate('')
     setPractitioner('')
+    window.scrollTo(0, 0);
+    reload()
   }
 
   return (
@@ -69,41 +74,40 @@ function Appointment({ user }) {
               <th>Date</th>
               <th>Duartion</th>
               <th colSpan={2}></th>
-              
             </tr>
             {allAppointmentsLength < 1 ? (
               <tr>
                 <td colSpan='7'>No Booked Sessions</td>
               </tr>
-            ) : ( 
-
-            allAppointments?.map((app) => (
-              <tr key={app.id}>
-                <td>{app.id}</td>
-                <td>{app.practitioner_id}</td>
-                <td>{app.practitioner_name}</td>
-                <td>{app.appointment_type}</td>
-                <td>{app.date}</td>
-                <td>{app.duration}</td>
-                <td>
-                  <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
-                </td>
-                <td>
-                  <i
-                    data-tip
-                    data-for='del'
-                    id='del-btn'
-                    onClick={() => {
-                      fetch(`/appointments/${app.id}`, {
-                      method: 'DELETE'
-                    })
-                    }}
-                    class='fa-solid fa-trash'
-                  ></i>
-                </td>
-              </tr>
-            ))
-
+            ) : (
+              allAppointments?.map((app) => (
+                <tr key={app.id}>
+                  <td>{app.id}</td>
+                  <td>{app.practitioner_id}</td>
+                  <td>{app.practitioner_name}</td>
+                  <td>{app.appointment_type}</td>
+                  <td>{app.date}</td>
+                  <td>{app.duration}</td>
+                  <td>
+                    <Link to={`/update/${app.id}`}>
+                      <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
+                    </Link>
+                  </td>
+                  <td>
+                    <i
+                      data-tip
+                      data-for='del'
+                      id='del-btn'
+                      onClick={() => {
+                        fetch(`/appointments/${app.id}`, {
+                          method: 'DELETE',
+                        });
+                      }}
+                      class='fa-solid fa-trash'
+                    ></i>
+                  </td>
+                </tr>
+              ))
             )}
           </tbody>
         </table>
