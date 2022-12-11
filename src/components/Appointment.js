@@ -9,25 +9,14 @@ function Appointment({ user }) {
   const [errors, setErrors] = useState([]);
   const [practitioner, setPractitioner] = useState('');
   const [date, setDate] = useState('');
-  // const [record, setRecord] = useState([]);
-  // const deletedId = [record][0].id;
   const allAppointments = user.appointments;
-  // const selected = allAppointments.find((x) => x.id === deletedId);
-  // const del = [selected][0].id;
-  // const delid = (JSON.stringify(del))
-  // console.log(delid);
+  const allAppointmentsLength = allAppointments.length
 
   useEffect(() => {
     fetch('/practitioners')
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
   }, []);
-
-  function handleDelete() {
-    // fetch(`/appointments/${delid}`, {
-    //   method: 'DELETE',
-    // });
-  }
 
   function handleBookingSubmit(e) {
     e.preventDefault();
@@ -84,13 +73,13 @@ function Appointment({ user }) {
               <th colSpan={2}></th>
               
             </tr>
-            {/* {allAppointmentsLength < 1 ? (
+            {allAppointmentsLength < 1 ? (
               <tr>
                 <td colSpan='7'>No Booked Sessions</td>
               </tr>
-            ) : (  */}
+            ) : ( 
 
-            {allAppointments?.map((app) => (
+            allAppointments?.map((app) => (
               <tr key={app.id}>
                 <td>{app.id}</td>
                 <td>{app.practitioner_id}</td>
@@ -107,16 +96,17 @@ function Appointment({ user }) {
                     data-for='del'
                     id='del-btn'
                     onClick={() => {
-                      // setRecord(app);
-                      // handleDelete();
+                      fetch(`/appointments/${app.id}`, {
+                      method: 'DELETE'
+                    })
                     }}
                     class='fa-solid fa-trash'
                   ></i>
                 </td>
               </tr>
-            ))}
+            ))
 
-            {/* )}  */}
+            )}
           </tbody>
         </table>
       </div>

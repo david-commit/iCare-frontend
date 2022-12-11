@@ -34,7 +34,7 @@ function Login({ onLogin }) {
     setPassword('')
   }
 
-    if (success == !null) return <NavLink to='/me' />;
+    if (success === !null) return <NavLink to='/me' />;
 
   return (
     <div className='login'>

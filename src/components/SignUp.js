@@ -39,11 +39,6 @@ function SignUp({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
-    setName('');
-    setPassword('');
-    setPasswordConfirmation('');
-    setCondition('');
-    setCaregiver('');
   }
 
   useEffect(() => {

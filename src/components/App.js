@@ -6,9 +6,10 @@ import Home from './Home';
 import Login from './Login';
 import NavBar from './NavBar';
 import SignUp from './SignUp';
+import Footer from './Footer';
 
 // DEPLOYED LINK
-const BASE_URL = "https://icare-backend-production-a245.up.railway.app"
+// const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -21,8 +22,6 @@ function App() {
       }
     });
   }, []);
-
-
 
   // if (user)
   //   return (
@@ -51,8 +50,9 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }
 
-export default (App);
+export default App;
