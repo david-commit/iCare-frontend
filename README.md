@@ -42,10 +42,11 @@ A user would be able to:
 - Login after signing up
 - Display a list of all patient's appointments
 - Book an appointment with a preferred practitioner
+- Delete a listed appointment
 - Logout of the session <br />
 
 Finishing up:
-- Ability to edit and delete an appointment
+- Ability to edit an appointment
 
 Challenges:
 - 405 Error <br />

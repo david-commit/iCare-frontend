@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // import { Tooltip } from 'react-tooltip';
 
-function Appointment({ user }) {
+// DELETE NOT WORKING CORRECTLY
+
+function UpdateAppointment({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([]);
   const [duration, setDuration] = useState('');
   const [appointmentType, setAppointmentType] = useState('');
@@ -8,7 +10,7 @@ function Appointment({ user }) {
   const [practitioner, setPractitioner] = useState('');
   const [date, setDate] = useState('');
   const allAppointments = user.appointments;
-  const allAppointmentsLength = allAppointments.length
+  const allAppointmentsLength = allAppointments.length;
 
   useEffect(() => {
     fetch('/practitioners')
@@ -20,7 +22,7 @@ function Appointment({ user }) {
     e.preventDefault();
     setErrors([]);
     fetch('/appointments', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -43,20 +45,16 @@ function Appointment({ user }) {
         });
       }
     });
-    setDuration('')
-    setAppointmentType('')
-    setDate('')
-    setPractitioner('')
+    setDuration('');
+    setAppointmentType('');
+    setDate('');
+    setPractitioner('');
   }
 
   return (
     <div className='patient-me'>
       <div className='patient-me-table'>
-        <h1>Hi {user.name},</h1>
-        <p>
-          See your booked appointments below. Refresh page if no records appear
-          or if frozen.
-        </p>
+        <h1>Update Appointment</h1>
         <br />
         <br />
         <table>
@@ -69,41 +67,38 @@ function Appointment({ user }) {
               <th>Date</th>
               <th>Duartion</th>
               <th colSpan={2}></th>
-              
             </tr>
             {allAppointmentsLength < 1 ? (
               <tr>
                 <td colSpan='7'>No Booked Sessions</td>
               </tr>
-            ) : ( 
-
-            allAppointments?.map((app) => (
-              <tr key={app.id}>
-                <td>{app.id}</td>
-                <td>{app.practitioner_id}</td>
-                <td>{app.practitioner_name}</td>
-                <td>{app.appointment_type}</td>
-                <td>{app.date}</td>
-                <td>{app.duration}</td>
-                <td>
-                  <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
-                </td>
-                <td>
-                  <i
-                    data-tip
-                    data-for='del'
-                    id='del-btn'
-                    onClick={() => {
-                      fetch(`/appointments/${app.id}`, {
-                      method: 'DELETE'
-                    })
-                    }}
-                    class='fa-solid fa-trash'
-                  ></i>
-                </td>
-              </tr>
-            ))
-
+            ) : (
+              allAppointments?.map((app) => (
+                <tr key={app.id}>
+                  <td>{app.id}</td>
+                  <td>{app.practitioner_id}</td>
+                  <td>{app.practitioner_name}</td>
+                  <td>{app.appointment_type}</td>
+                  <td>{app.date}</td>
+                  <td>{app.duration}</td>
+                  <td>
+                    <i id='edit-btn' class='fa-solid fa-pen-to-square'></i>
+                  </td>
+                  <td>
+                    <i
+                      data-tip
+                      data-for='del'
+                      id='del-btn'
+                      onClick={() => {
+                        fetch(`/appointments/${app.id}`, {
+                          method: 'DELETE',
+                        });
+                      }}
+                      class='fa-solid fa-trash'
+                    ></i>
+                  </td>
+                </tr>
+              ))
             )}
           </tbody>
         </table>
@@ -160,4 +155,20 @@ function Appointment({ user }) {
   );
 }
 
-export default Appointment;
+export default UpdateAppointment;
+
+// function handleLikeClick() {
+//   const updateObj = {
+//     likes: toy.likes + 1,
+//   };
+
+//   fetch(`/toys/${id}`, {
+//     method: 'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(updateObj),
+//   })
+//     .then((r) => r.json())
+//     .then((updatedToy) => onUpdateToy(updatedToy));
+// }
