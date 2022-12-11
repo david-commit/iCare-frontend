@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'; // import { Tooltip } from 'react-tooltip';
 import { NavLink } from 'react-router-dom';
 
-// DELETE NOT WORKING CORRECTLY
-
 function UpdateAppointment({ user }) {
   const [allPractitioners, setAllPractitioners] = useState([]);
   const [duration, setDuration] = useState('');
@@ -16,10 +14,6 @@ function UpdateAppointment({ user }) {
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
   }, []);
-
-  // useEffect(() => {
-  //  fetch(`/appointments/${id}`)
-  // })
 
   function handleBookingUpdate(e) {
     e.preventDefault();
@@ -107,19 +101,3 @@ function UpdateAppointment({ user }) {
 }
 
 export default UpdateAppointment;
-
-// function handleLikeClick() {
-//   const updateObj = {
-//     likes: toy.likes + 1,
-//   };
-
-//   fetch(`/toys/${id}`, {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(updateObj),
-//   })
-//     .then((r) => r.json())
-//     .then((updatedToy) => onUpdateToy(updatedToy));
-// }
