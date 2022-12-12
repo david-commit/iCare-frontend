@@ -5,6 +5,7 @@ function SignUp({ onLogin }) {
 
   // DEPLOYED API LINK
   const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'http://localhost:3000';
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import familyImg from "../img/family.jpg"
+import familyImg from '../img/family.jpg';
 import motherChildren from '../img/mother-children.jpg';
 import momChild from '../img/cpg-community-mom-child-300x217.jpg';
 
 function Home() {
-
   return (
     <div className='home'>
       <div className='home-banner'>

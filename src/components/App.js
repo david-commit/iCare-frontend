@@ -12,6 +12,7 @@ import UpdateAppointment from './UpdateAppointment';
 function App() {
   // DEPLOYED API LINK
   const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'http://localhost:3000';
 
   const [user, setUser] = useState(null);
 

@@ -13,6 +13,7 @@ function Appointment({ user }) {
 
   // DEPLOYED API LINK
   const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'http://localhost:3000';
 
   const reload = () => window.location.reload();
 

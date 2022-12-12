@@ -10,6 +10,7 @@ function Login({ onLogin }) {
 
   // DEPLOYED API LINK
   const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'http://localhost:3000';
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -49,6 +50,7 @@ function Login({ onLogin }) {
           type='text'
           id='username'
           autoComplete='off'
+          placeholder='e.g Joe'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 function UpdateAppointment({ user }) {
   // DEPLOYED API LINK
   const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'http://localhost:3000';
 
   const [allPractitioners, setAllPractitioners] = useState([]);
   const [duration, setDuration] = useState('');
