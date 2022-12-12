@@ -5,6 +5,7 @@ import motherChildren from '../img/mother-children.jpg';
 import momChild from '../img/cpg-community-mom-child-300x217.jpg';
 
 function Home() {
+
   return (
     <div className='home'>
       <div className='home-banner'>
@@ -17,7 +18,7 @@ function Home() {
             fulfilled life in their home and community regardless of disability.
           </p>
           <br />
-          <Link to='/signup'>
+          <Link to={`/signup`}>
             <button type='button'>Register Patient</button>
           </Link>
         </div>
@@ -38,7 +39,9 @@ function Home() {
             or trusted friend?
           </p>
           <br />
-          <button type='button'>Find out more</button>
+          <Link to={`/signup`}>
+            <button type='button'>Find out more</button>
+          </Link>
         </div>
       </div>
       <div className='home-cont-3'>
@@ -58,7 +61,9 @@ function Home() {
           Our experienced Intake Specialists and nurses are here to help
           determine the best fit for your individual situation.
         </p>
-        <button type='button'>Explore Our Services</button>
+        <Link to={`/signup`}>
+          <button type='button'>Explore our services</button>
+        </Link>
         <br />
         <br />
       </div>

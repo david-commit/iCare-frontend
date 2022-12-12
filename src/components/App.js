@@ -9,15 +9,15 @@ import SignUp from './SignUp';
 import Footer from './Footer';
 import UpdateAppointment from './UpdateAppointment';
 
-// DEPLOYED LINK
-// const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
-
 function App() {
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     // auto-login
-    fetch('/me').then((r) => {
+    fetch(`${BASE_URL}/me`).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }

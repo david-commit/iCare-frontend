@@ -8,10 +8,13 @@ function Login({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(null);
 
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch('/login', {
+    fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,16 +28,17 @@ function Login({ onLogin }) {
           setSuccess(user);
         });
       } else {
-        r.json().then((err) => {setErrors(err.errors)
-        console.log(err)
+        r.json().then((err) => {
+          setErrors(err.errors);
+          console.log(err);
         });
       }
     });
     setName('');
-    setPassword('')
+    setPassword('');
   }
 
-    if (success === !null) return <NavLink to='/me' />;
+  if (success === !null) return <NavLink to={'/me'} />;
 
   return (
     <div className='login'>
@@ -68,7 +72,7 @@ function Login({ onLogin }) {
         <hr />
         <p>
           Don't have an account? &nbsp;
-          <Link to='/signup'>
+          <Link to={`/signup`}>
             <button type='button'>Sign Up</button>
           </Link>
         </p>

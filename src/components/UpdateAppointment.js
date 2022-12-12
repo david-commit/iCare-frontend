@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'; // import { Tooltip } from '
 import { NavLink } from 'react-router-dom';
 
 function UpdateAppointment({ user }) {
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   const [allPractitioners, setAllPractitioners] = useState([]);
   const [duration, setDuration] = useState('');
   const [appointmentType, setAppointmentType] = useState('');
@@ -10,7 +13,7 @@ function UpdateAppointment({ user }) {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    fetch('/practitioners')
+    fetch(`${BASE_URL}/practitioners`)
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
   }, []);
@@ -18,7 +21,7 @@ function UpdateAppointment({ user }) {
   function handleBookingUpdate(e) {
     e.preventDefault();
     setErrors([]);
-    fetch(`/appointments/:id`, {
+    fetch(`${BASE_URL}/appointments/:id`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +36,7 @@ function UpdateAppointment({ user }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          <NavLink to="/appointments"></NavLink>
+          <NavLink to={`/appointments`}></NavLink>;
         });
       } else {
         r.json().then((err) => {
@@ -50,7 +53,8 @@ function UpdateAppointment({ user }) {
   return (
     <div className='patient-me'>
       <div className='patient-me-form'>
-        <h1>Update Appointment</h1><br />
+        <h1>Update Appointment</h1>
+        <br />
         <form id='appointment-form' onSubmit={handleBookingUpdate}>
           <label htmlFor='practitioner'>Select Practitioner</label>
           <select

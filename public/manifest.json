@@ -1,6 +1,7 @@
 {
   "short_name": "iCare",
   "name": "iCare Health App",
+  "description": "iCare Health App is a web platform built with React and Ruby on Rails for the front-end and back-end respectfully. The platform assists patients in finding caregivers and booking medical appointments with their preferred practitioners. iCare creates a community of like-minded individuals who seek to see the betterment of individuals sffected by Celebral Palsy, ADHD, Down Syndrome, Autism etc.",
   "icons": [
     {
 

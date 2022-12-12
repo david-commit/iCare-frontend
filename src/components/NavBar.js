@@ -2,9 +2,12 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 function NavBar({ user, setUser }) {
-  
+
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   function handleLogoutClick() {
-    fetch('/logout', { method: 'DELETE' }).then((r) => {
+    fetch(`${BASE_URL}/logout`, { method: 'DELETE' }).then((r) => {
       if (r.ok) {
         setUser(null);
       }
@@ -24,15 +27,15 @@ function NavBar({ user, setUser }) {
             <>
               <NavLink
                 className='nav-menu'
-                to='/me'
-                style={{width: "max-content"}}
+                to={`/me`}
+                style={{ width: 'max-content' }}
               >
                 Appointments
               </NavLink>
               <NavLink
                 className='nav-menu'
                 onClick={handleLogoutClick}
-                to='/'
+                to={`/`}
                 variant='outline'
               >
                 Logout
@@ -40,10 +43,10 @@ function NavBar({ user, setUser }) {
             </>
           ) : (
             <>
-              <NavLink className='nav-menu' exact to='/signup'>
+              <NavLink className='nav-menu' exact to={`/signup`}>
                 Signup
               </NavLink>
-              <NavLink className='nav-menu' exact to='/login'>
+              <NavLink className='nav-menu' exact to={`/login`}>
                 Login
               </NavLink>
             </>

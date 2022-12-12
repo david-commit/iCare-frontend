@@ -11,18 +11,24 @@ function Appointment({ user }) {
   const allAppointments = user.appointments;
   // const allAppointmentsLength = allAppointments.length
 
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   const reload = () => window.location.reload();
 
   useEffect(() => {
-    fetch('/practitioners')
+    fetch(`${BASE_URL}/practitioners`)
       .then((response) => response.json())
-      .then((data) => setAllPractitioners(data));
-  }, [allPractitioners]);
+      .then((data) => {
+        setAllPractitioners(data);
+        // reload();
+      });
+  }, []);
 
   function handleBookingSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch('/appointments', {
+    fetch(`${BASE_URL}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,8 +60,6 @@ function Appointment({ user }) {
     reload();
   }
 
-  
-
   return (
     <div className='patient-me'>
       <div className='patient-me-table'>
@@ -77,6 +81,7 @@ function Appointment({ user }) {
               <th>Duartion</th>
               <th colSpan={2}></th>
             </tr>
+            {/* ==FAILS DUE TO TIMEOUT, USE ASYNC/AWAIT == */}
             {/* {allAppointmentsLength < 1 ? (
               <tr>
                 <td colSpan='7'>No Booked Sessions</td>

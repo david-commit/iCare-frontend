@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 function SignUp({ onLogin }) {
+
+  // DEPLOYED API LINK
+  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -16,7 +20,7 @@ function SignUp({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch('/signup', {
+    fetch(`${BASE_URL}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,12 +46,12 @@ function SignUp({ onLogin }) {
   }
 
   useEffect(() => {
-    fetch('/caregivers')
+    fetch(`${BASE_URL}/caregivers`)
       .then((response) => response.json())
       .then((data) => setAllCaregivers(data));
   }, []);
 
-  if (success === !null) return <NavLink to='/me' />;
+  if (success === !null) return <NavLink to={`/me`} />;
 
   return (
     <div className='signup'>
@@ -115,7 +119,7 @@ function SignUp({ onLogin }) {
         <hr />
         <p>
           Already have an account? &nbsp;
-          <Link to='/login'>
+          <Link to={`/login`}>
             <button type='button'>Login</button>
           </Link>
         </p>
