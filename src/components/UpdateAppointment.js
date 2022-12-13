@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function UpdateAppointment({ user }) {
   // DEPLOYED API LINK
-  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
   // const BASE_URL = 'http://localhost:3000';
 
   const [allPractitioners, setAllPractitioners] = useState([]);
@@ -14,7 +14,7 @@ function UpdateAppointment({ user }) {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    fetch(`${BASE_URL}/practitioners`)
+    fetch(`/practitioners`)
       .then((response) => response.json())
       .then((data) => setAllPractitioners(data));
   }, []);
@@ -22,7 +22,7 @@ function UpdateAppointment({ user }) {
   function handleBookingUpdate(e) {
     e.preventDefault();
     setErrors([]);
-    fetch(`${BASE_URL}/appointments/:id`, {
+    fetch(`/appointments/:id`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

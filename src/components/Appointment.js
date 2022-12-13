@@ -12,13 +12,13 @@ function Appointment({ user }) {
   // const allAppointmentsLength = allAppointments.length
 
   // DEPLOYED API LINK
-  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
   // const BASE_URL = 'http://localhost:3000';
 
   const reload = () => window.location.reload();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/practitioners`)
+    fetch(`/practitioners`)
       .then((response) => response.json())
       .then((data) => {
         setAllPractitioners(data);
@@ -29,7 +29,7 @@ function Appointment({ user }) {
   function handleBookingSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch(`${BASE_URL}/appointments`, {
+    fetch(`/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

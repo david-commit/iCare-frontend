@@ -4,11 +4,11 @@ import { NavLink, Link } from 'react-router-dom';
 function NavBar({ user, setUser }) {
 
   // DEPLOYED API LINK
-  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
   // const BASE_URL = 'http://localhost:3000';
 
   function handleLogoutClick() {
-    fetch(`${BASE_URL}/logout`, { method: 'DELETE' }).then((r) => {
+    fetch(`/logout`, { method: 'DELETE' }).then((r) => {
       if (r.ok) {
         setUser(null);
       }

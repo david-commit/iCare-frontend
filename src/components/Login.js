@@ -9,13 +9,13 @@ function Login({ onLogin }) {
   const [success, setSuccess] = useState(null);
 
   // DEPLOYED API LINK
-  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
   // const BASE_URL = 'http://localhost:3000';
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch(`${BASE_URL}/login`, {
+    fetch(`/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

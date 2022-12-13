@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 function SignUp({ onLogin }) {
 
   // DEPLOYED API LINK
-  const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
+  // const BASE_URL = 'https://icare-backend-production-a245.up.railway.app';
   // const BASE_URL = 'http://localhost:3000';
 
   const [name, setName] = useState('');
@@ -21,7 +21,7 @@ function SignUp({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch(`${BASE_URL}/signup`, {
+    fetch(`/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function SignUp({ onLogin }) {
   }
 
   useEffect(() => {
-    fetch(`${BASE_URL}/caregivers`)
+    fetch(`/caregivers`)
       .then((response) => response.json())
       .then((data) => setAllCaregivers(data));
   }, []);
